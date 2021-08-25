@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package ru.geekbrains.lession6;
 
 import okhttp3.HttpUrl;
@@ -58,3 +66,4 @@ public class Lession6 {
  * * для получения api ключа, найдите нужный endpoint и изучите документацию. Бесплатный тарифный план предполагает*
  * * получение погоды не более чем на 5 дней вперед (этого достаточно для выполнения д/з).
  **/
+
