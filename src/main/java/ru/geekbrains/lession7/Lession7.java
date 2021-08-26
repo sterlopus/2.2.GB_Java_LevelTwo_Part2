@@ -1,5 +1,6 @@
 package ru.geekbrains.lession7;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -10,11 +11,20 @@ import java.io.IOException;
 public class Lession7 {
     public static void main(String[] args) throws IOException {
 
-        String  city = "Moscow";
-        WeatherReport weatherReport = new WeatherReport(city);
+        String  city = "Москва";
 
+        CityGeocoding cityGeocoding = new CityGeocoding(city);
+        String output = cityGeocoding.cityCoordinates();
+        System.out.println("all json:" + output);
 
-        System.out.println("5 days forecast is: " + );
+        ObjectMapper objectMapper = new ObjectMapper();
+        Coordinates coordinates = objectMapper.readValue(output, Coordinates.class);
+//        System.out.println(coordinates.getLat());
+//        System.out.println(coordinates.getLng());
+        System.out.println("coords:" + coordinates.toString());
+
+//        WeatherReport weatherReport = new WeatherReport(city);
+//        System.out.println("5 days forecast is: " + );
 
     }
 }
