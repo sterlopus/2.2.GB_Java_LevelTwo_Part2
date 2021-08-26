@@ -1,6 +1,7 @@
 package ru.geekbrains.lession7;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import okhttp3.HttpUrl;
@@ -13,7 +14,10 @@ import java.io.IOException;
 
 public class CityGeocoding {
 
-    @Getter private String city;
+    private String city;
+
+    @Getter JsonNode lat;
+    @Getter JsonNode lng;
 
     final String HOST = "graphhopper.com";
     final String SCHEMA = "https";
@@ -23,11 +27,11 @@ public class CityGeocoding {
     final String APIKEY = "cdeac1fb-60f1-4bad-a278-5e99d731e9b9";
 
 
-    public CityGeocoding(String city) throws IOException {
+    public CityGeocoding(String city) throws IOException {  //constructor
         this.city = city;
     }
 
-    public String cityCoordinates() throws IOException {
+    public void cityCoordinates() throws IOException {    //method for get json by url
         OkHttpClient client = new OkHttpClient();
         HttpUrl url = new HttpUrl.Builder()
                 .scheme(SCHEMA)
@@ -45,11 +49,11 @@ public class CityGeocoding {
 
         Response response = client.newCall(request).execute();
         String body = response.body().string();
-//        return body;
+        System.out.println("[DEBUG_CityGeocoding] total json: " + body);   //TODO:  Delete before production
 
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        Coordinates coordinates = objectMapper.readValue(body, Coordinates.class);
-//        System.out.println("coords:" + coordinates);
-        return body;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        lat = objectMapper.readTree(body).at("/hits/0/point/lat");
+        lng = objectMapper.readTree(body).at("/hits/0/point/lng");
     }
 }

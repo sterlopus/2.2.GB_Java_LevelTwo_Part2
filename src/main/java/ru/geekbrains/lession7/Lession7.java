@@ -14,29 +14,31 @@ public class Lession7 {
         String  city = "Москва";
 
         CityGeocoding cityGeocoding = new CityGeocoding(city);
-        String output = cityGeocoding.cityCoordinates();
-        System.out.println("all json:" + output);
+        cityGeocoding.cityCoordinates();
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        Coordinates coordinates = objectMapper.readValue(output, Coordinates.class);
-//        System.out.println(coordinates.getLat());
-//        System.out.println(coordinates.getLng());
-        System.out.println("coords:" + coordinates.toString());
+        String x = cityGeocoding.getLat().toString();
+        String y = cityGeocoding.getLng().toString();
 
-//        WeatherReport weatherReport = new WeatherReport(city);
-//        System.out.println("5 days forecast is: " + );
+        System.out.println("[DEBUG coordinates]  x: " + x +"y: " +y); //todo: Delete before production
+
+
+        WeatherReport weatherReport = new WeatherReport(x,y);
+        System.out.println("[Debug main]  5 days forecast is: " + weatherReport.getWeatherReport());
+
+
 
     }
 }
 
-
 /**
- * * 1.С помощью http запроса получить в виде json строки погоду в Санкт-Петербурге на период времени,
- * * пересекающийся со следующим занятием (например, выборка погода на следующие 5 дней - подойдет)
- * **
- * * 2.Подобрать источник самостоятельно.
- * * Можно использовать api accuweather, порядок следующий: зарегистрироваться, зарегистрировать тестовое приложение*
- * * для получения api ключа, найдите нужный endpoint и изучите документацию. Бесплатный тарифный план предполагает*
- * * получение погоды не более чем на 5 дней вперед (этого достаточно для выполнения д/з).
- **/
-
+ * Реализовать корректный вывод информации о текущей погоде.
+ *
+ * Создать класс WeatherResponse и десериализовать ответ сервера.
+ * Выводить пользователю только текстовое описание погоды и температуру в градусах Цельсия.
+ *
+ * Реализовать корректный выход из программы
+ *
+ * Реализовать вывод погоды на следующие 5 дней в формате:
+ * В городе CITY на дату DATE ожидается WEATHER_TEXT, температура - TEMPERATURE
+ *
+ */
