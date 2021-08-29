@@ -49,7 +49,7 @@ public class CityGeocoding {
 
         Response response = client.newCall(request).execute();
         String body = response.body().string();
-        System.out.println("[DEBUG_CityGeocoding] total json: " + body);   //TODO:  Delete before production
+//        System.out.println("[DEBUG_CityGeocoding] total json: " + body);   //TODO:  Delete before production
 
         ObjectMapper objectMapper = new ObjectMapper();
 

@@ -5,6 +5,7 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import ru.geekbrains.lession7.parseClasses.DailyForecast;
 
 import java.io.IOException;
 
@@ -19,11 +20,11 @@ public class Lession7 {
         String x = cityGeocoding.getLat().toString();
         String y = cityGeocoding.getLng().toString();
 
-        System.out.println("[DEBUG coordinates]  x: " + x +"y: " +y); //todo: Delete before production
+//        System.out.println("[DEBUG coordinates]  x: " + x +" y: " +y); //todo: Delete before production
 
 
         WeatherReport weatherReport = new WeatherReport(x,y);
-        System.out.println("[Debug main]  5 days forecast is: " + weatherReport.getWeatherReport());
+        weatherReport.getWeatherReport();
 
 
 
