@@ -1,5 +1,8 @@
 package ru.geekbrains.lession7.parseClasses;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Fact {
     private float temp;
     private float feels_like;
